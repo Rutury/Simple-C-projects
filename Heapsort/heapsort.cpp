@@ -2,16 +2,10 @@
 
 using namespace std;
 
-void swap(vector<int> v, int i, int j) {
+void swap(vector<int>& v, int i, int j) {
     int k = v[i];
     v[i] = v[j];
     v[j] = k;
-}
-
-void makeHeap(vector<int>& v) {
-    int n = v.size();
-    for (int i = n / 2; i > 0; i--)
-        drown(v, i, n);
 }
 
 void drown(vector<int>& v, int i, int n) {
@@ -27,6 +21,12 @@ void drown(vector<int>& v, int i, int n) {
         swap(v, i, toSwap);
         drown(v, toSwap, n);
     }
+}
+
+void makeHeap(vector<int>& v) {
+    int n = v.size();
+    for (int i = (n - 1) / 2; i >= 0; i--)
+        drown(v, i, n);
 }
 
 void heapSort(vector<int>& v) {
